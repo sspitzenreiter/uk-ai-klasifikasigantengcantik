@@ -51,7 +51,7 @@ while cv2.waitKey(1)<0 :
     resultImg,faceBoxes=highlightFace(faceNet,frame)
     if not faceBoxes:
         print("No face detected")
-
+    gender=""
     for faceBox in faceBoxes:
         face=frame[max(0,faceBox[1]-padding):
                    min(faceBox[3]+padding,frame.shape[0]-1),max(0,faceBox[0]-padding)
@@ -61,7 +61,7 @@ while cv2.waitKey(1)<0 :
         genderNet.setInput(blob)
         genderPreds=genderNet.forward()
         gender=genderList[genderPreds[0].argmax()]
-        print(f'Gender: {gender}')
+    print(f'Gender: {gender}')
 
-        cv2.putText(resultImg, f'{gender}', (faceBox[0], faceBox[1]-10), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0,255,255), 2, cv2.LINE_AA)
-        cv2.imshow("Detecting gender", resultImg)
+        #cv2.putText(resultImg, f'{gender}', (faceBox[0], faceBox[1]-10), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0,255,255), 2, cv2.LINE_AA)
+        #cv2.imshow("Detecting gender", resultImg)

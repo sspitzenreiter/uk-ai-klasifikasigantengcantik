@@ -17,7 +17,7 @@ if not os.path.isdir(UPLOAD_FOLDER):
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
-ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'wav'])
+ALLOWED_EXTENSIONS = set(['jpg'])
 
 
 def allowed_file(filename):
@@ -46,7 +46,7 @@ def upload_file():
             flash('File successfully uploaded')
             return redirect('/')
         else:
-            flash('Allowed file types are txt, pdf, png, jpg, jpeg, gif, wav')
+            flash('Allowed file types are jpg')
             return redirect(request.url)
 
 
