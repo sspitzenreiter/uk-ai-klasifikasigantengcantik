@@ -1,6 +1,7 @@
 import os
 from flask import Flask, flash, request, redirect, render_template
 from werkzeug.utils import secure_filename
+import detect
 
 app=Flask(__name__)
 
@@ -43,11 +44,13 @@ def upload_file():
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            flash('File successfully uploaded')
+            
+            flash(detect.read(filename))
             return redirect('/')
         else:
             flash('Allowed file types are jpg')
             return redirect(request.url)
+
 
  
 if __name__ == "__main__":
