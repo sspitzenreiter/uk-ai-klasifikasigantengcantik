@@ -49,6 +49,6 @@ def upload_file():
             flash('Allowed file types are jpg')
             return redirect(request.url)
 
-
+ 
 if __name__ == "__main__":
     app.run(host = '127.0.0.1',port = 5000, debug = False)
